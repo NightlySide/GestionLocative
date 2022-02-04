@@ -1,2 +1,7 @@
 # GestionLocative
-WIP
+
+## Stack
+
+-   MongoDB
+-   Python (backend)
+-   NextJS/React (frontend)
