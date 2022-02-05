@@ -3,6 +3,8 @@ import { Button, Card, Elevation, FormGroup, InputGroup, Intent } from "@bluepri
 import styles from "../styles/Login.module.css";
 import { useState } from "react";
 import { Tooltip2 } from "@blueprintjs/popover2";
+import Head from "next/head";
+import { SITE_NAME } from "../constants";
 
 const Login: NextPage = () => {
 	const [showPassword, setShowPassword] = useState(false);
@@ -108,7 +110,12 @@ const Login: NextPage = () => {
 
 	return (
 		<div className={`bp4-light ${styles.container}`}>
-			<header></header>
+			<Head>
+				<title>Inscription | {SITE_NAME}</title>
+				<meta name="description" content="Page de connexion à l'espace utilisateur" />
+				<link rel="icon" href="/favicon.ico" />
+			</Head>
+
 			<main className={styles.main}>
 				<Card className={styles.login_card} elevation={Elevation.TWO}>
 					<h1>Inscription</h1>

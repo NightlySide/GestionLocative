@@ -1,7 +1,7 @@
 import { Button, Icon } from "@blueprintjs/core";
 import { createContext, useContext } from "react";
 
-import styles from "./style.module.css";
+import styles from "./dark_theme_toggle.module.css";
 
 export const ThemeContext = createContext({
 	theme: "light",
