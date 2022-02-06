@@ -2,7 +2,7 @@
 
 ## Authentification
 
-```
+```http
 POST /auth/login
 ```
 
@@ -16,7 +16,7 @@ Returns:
 -   status (bool): résultat de l'authentification
 -   token (str): jeton JWT correspondant à l'utilisateur
 
-```
+```http
 POST /auth/register
 ```
 
@@ -34,7 +34,7 @@ Returns:
 -   status (bool): résultat de l'inscription
 -   message (str): message d'erreur si impossible de créer l'utilisateur
 
-```
+```http
 GET /auth/check_token?token=<token>
 ```
 
@@ -49,7 +49,7 @@ Returns:
 
 ## Propriétaire
 
-```
+```http
 GET /account/infos?token=<token>
 ```
 
@@ -63,7 +63,7 @@ Returns:
 
 ## Biens
 
-```
+```http
 GET /property/?token=<token>
 ```
 
@@ -75,7 +75,7 @@ Returns:
 
 -   properties ([uuid]): liste des uuid des appartements
 
-```
+```http
 GET /property/[id]?token=<token>
 ```
 
@@ -88,7 +88,7 @@ Returns:
 
 -   property ([json]): informations sur le bien
 
-```
+```http
 POST /property/
 ```
 
@@ -103,7 +103,7 @@ Returns:
 -   uuid (str): id du bien
 -   message (str): message d'erreur si échec de création
 
-```
+```http
 PUT /property/[id]
 ```
 
@@ -121,7 +121,7 @@ Returns:
 -   status (bool): réussite de la mise à jour du logement
 -   message (str): message d'erreur si échec de création
 
-```
+```http
 DELETE /property/[id]
 ```
 
@@ -139,7 +139,7 @@ Returns:
 
 ## Locataires
 
-```
+```http
 GET /tenant/?token=<token>
 ```
 
@@ -151,7 +151,7 @@ Returns:
 
 -   tenants ([uuid]): liste des uuid des locataires du propriétaire
 
-```
+```http
 GET /tenant/[id]?token=<token>
 ```
 
@@ -164,7 +164,7 @@ Returns:
 
 -   tenant ([json]): informations sur le locataire
 
-```
+```http
 POST /tenant/
 ```
 
@@ -179,7 +179,7 @@ Returns:
 -   uuid (str): id du locataire
 -   message (str): message d'erreur si échec de création
 
-```
+```http
 PUT /tenant/[id]
 ```
 
@@ -197,7 +197,7 @@ Returns:
 -   status (bool): réussite de la mise à jour du locataire
 -   message (str): message d'erreur si échec de création
 
-```
+```http
 DELETE /tenant/[id]
 ```
 
