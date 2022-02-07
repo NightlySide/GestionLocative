@@ -20,3 +20,7 @@
 	padding-left: 2em !important;
 	padding-right: 2em !important;
 }
+
+.sidenav > ul > li > a:focus {
+	outline: none !important;
+}
