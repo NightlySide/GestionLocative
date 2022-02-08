@@ -6,6 +6,7 @@
 	display: flex;
 	flex-wrap: wrap;
 	margin: 0 -1em;
+	justify-content: flex-start;
 }
 
 .tenant_cards > div {
@@ -13,7 +14,7 @@
 	margin: 1em 1em;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1150px) {
 	.tenant_cards > div {
 		flex: 1 1 30%;
 	}
