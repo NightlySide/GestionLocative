@@ -1,0 +1,24 @@
+.container {
+	position: relative;
+}
+
+.image_wrapper {
+	width: 100px;
+	margin-right: 1em;
+}
+
+.title {
+	margin-top: 0;
+}
+
+.content {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.edit_button {
+	position: absolute;
+	right: 0.5rem;
+	top: 1rem;
+}

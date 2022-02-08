@@ -6,7 +6,7 @@ import InformationsPanel from "../../components/property_tabs/informations";
 import RoomPanel from "../../components/property_tabs/room";
 import styles from "../../styles/Dashboard.module.css";
 
-const Property = () => {
+const PropertyPage = () => {
 	const router = useRouter();
 	const { pid } = router.query;
 
@@ -52,4 +52,4 @@ const Property = () => {
 	);
 };
 
-export default Property;
+export default PropertyPage;
