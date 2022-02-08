@@ -5,9 +5,16 @@
 .tenant_cards {
 	display: flex;
 	flex-wrap: wrap;
+	margin: 0 -1em;
 }
 
 .tenant_cards > div {
 	flex: 0 0 30%;
 	margin: 1em 1em;
+}
+
+@media screen and (max-width: 1000px) {
+	.tenant_cards > div {
+		flex: 1 1 30%;
+	}
 }
