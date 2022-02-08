@@ -1,7 +1,7 @@
 import { Classes, Dialog } from "@blueprintjs/core";
-import { Dispatch, useContext } from "react";
+import { useTheme } from "next-themes";
+import { Dispatch } from "react";
 import { Tenant } from "../../models/tenant";
-import { ThemeContext } from "../dark_theme_toggle";
 
 interface TenantDialogProps {
 	tenant: Tenant;
@@ -10,7 +10,7 @@ interface TenantDialogProps {
 }
 
 const TenantDialog = (props: TenantDialogProps) => {
-	const { theme } = useContext(ThemeContext);
+	const { theme } = useTheme();
 	console.log(theme);
 
 	return (
