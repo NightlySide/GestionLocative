@@ -1,7 +1,7 @@
 import MainLayout from "../components/main_layout";
 
-const Dashboard = () => {
+const DashboardPage = () => {
 	return <MainLayout>Dashboard</MainLayout>;
 };
 
-export default Dashboard;
+export default DashboardPage;
