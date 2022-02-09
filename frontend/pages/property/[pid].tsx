@@ -4,6 +4,7 @@ import { useState } from "react";
 import MainLayout from "../../components/main_layout";
 import InformationsPanel from "../../components/property_tabs/informations";
 import RoomPanel from "../../components/property_tabs/room";
+import SiteHead from "../../components/site_head";
 import styles from "../../styles/Dashboard.module.css";
 
 const PropertyPage = () => {
@@ -29,6 +30,7 @@ const PropertyPage = () => {
 
 	return (
 		<MainLayout>
+			<SiteHead title={`Logement n°${pid}`} />
 			<Navbar className={styles.tab_nav}>
 				<Navbar.Group className={styles.tab_nav_group} align={Alignment.LEFT}>
 					<Tabs

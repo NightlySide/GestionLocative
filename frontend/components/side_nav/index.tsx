@@ -13,7 +13,9 @@ const SideNav = () => {
 				<Link href="/tenant" passHref>
 					<MenuItem icon="people" text="Locataires" />
 				</Link>
-				<MenuItem icon="euro" text="Transactions" />
+				<Link href="/transactions" passHref>
+					<MenuItem icon="euro" text="Transactions" />
+				</Link>
 				<MenuDivider title="Logements" />
 				<Link href="/property/1" passHref>
 					<MenuItem icon="home" text="Bien n°1" multiline />
