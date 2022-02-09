@@ -1,0 +1,10 @@
+.container {
+	padding: 1em 1em;
+}
+
+.transactions_list {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	overflow-y: auto;
+}
