@@ -1,0 +1,38 @@
+.container {
+	position: relative;
+}
+
+.image_wrapper {
+	width: 100px;
+	margin-right: 5em;
+}
+
+.title {
+	margin-top: 0;
+}
+
+.content {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.infos {
+	flex: 1 0 50%;
+}
+
+.edit_button {
+	position: absolute;
+	right: 0.5rem;
+	top: 1rem;
+}
+
+.buttons {
+	margin-top: 1.75em;
+	display: flex;
+	flex-direction: row;
+}
+
+.buttons > button {
+	margin-right: 1em;
+}
