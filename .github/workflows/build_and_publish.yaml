@@ -29,5 +29,4 @@ jobs:
                   platforms: linux/amd64
                   push: true
                   tags: |
-                      nightlyside/gestion-locative:latest
                       ghcr.io/nightlyside/gestion-locative:latest
