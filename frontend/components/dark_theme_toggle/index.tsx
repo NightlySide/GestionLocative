@@ -2,7 +2,7 @@ import { Button, Icon, Position } from "@blueprintjs/core";
 import { Tooltip2 } from "@blueprintjs/popover2";
 import { useTheme } from "next-themes";
 
-import styles from "./style.module.css";
+import styles from "./dark_theme_toggle.module.css";
 
 export const DarkThemeToggle = () => {
 	const { theme, setTheme } = useTheme();
