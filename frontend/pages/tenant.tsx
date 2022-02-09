@@ -1,4 +1,5 @@
 import MainLayout from "../components/main_layout";
+import SiteHead from "../components/site_head";
 import TenantCard from "../components/tenant_card";
 import { Tenant } from "../models/tenant";
 import styles from "../styles/Tenant.module.css";
@@ -19,6 +20,7 @@ const TenantPage = () => {
 
 	return (
 		<MainLayout>
+			<SiteHead title="Locataires" />
 			<div className={styles.container}>
 				<h1>Locataires</h1>
 				<div className={styles.tenant_cards}>

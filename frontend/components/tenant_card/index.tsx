@@ -1,4 +1,4 @@
-import { Button, Card, Classes, Dialog, Elevation, Intent, Overlay } from "@blueprintjs/core";
+import { Button, Card, Classes, Dialog, Elevation, Icon, Intent, Overlay } from "@blueprintjs/core";
 import { Tooltip2 } from "@blueprintjs/popover2";
 import Image from "next/image";
 import { useState } from "react";
@@ -29,7 +29,7 @@ const TenantCard = (props: TenantCardProps) => {
 
 			<div className={styles.content}>
 				<div className={styles.image_wrapper}>
-					<Image alt={`Image de profil de ${tenant.fullname}`} src={tenant.image!} height={256} width={256} />
+					<Icon icon="person" size={100} />
 				</div>
 				<div className={styles.infos}>
 					<p>
