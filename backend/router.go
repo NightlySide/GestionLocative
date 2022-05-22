@@ -22,7 +22,7 @@ var jwtMiddleware = middleware.JWTWithConfig(middleware.JWTConfig{
 	ErrorHandlerWithContext: auth.JWTErrorChecker,
 })
 
-func setupRouter(e *echo.Echo) {
+func setupRouter(e *echo.Group) {
 	setupAuthRoutes(e)
 	setupAdminRoutes(e)
 	setupAccountRoutes(e)
@@ -32,7 +32,7 @@ func setupRouter(e *echo.Echo) {
 	setupTransactionRoutes(e)
 }
 
-func setupAuthRoutes(e *echo.Echo) {
+func setupAuthRoutes(e *echo.Group) {
 	authGroup := e.Group("/auth")
 	authGroup.POST("/login", controllers.Login())
 	authGroup.POST("/register", controllers.Register())
@@ -40,21 +40,21 @@ func setupAuthRoutes(e *echo.Echo) {
 	authGroup.GET("/refresh", controllers.RefreshToken())
 }
 
-func setupAdminRoutes(e *echo.Echo) {
+func setupAdminRoutes(e *echo.Group) {
 	// defining the admin router group
 	adminGroup := e.Group("/admin")
 	// use middleware for jwt
 	adminGroup.Use(jwtMiddleware)
 }
 
-func setupAccountRoutes(e *echo.Echo) {
+func setupAccountRoutes(e *echo.Group) {
 	accountGroup := e.Group("/account")
 	accountGroup.Use(jwtMiddleware)
 
 	accountGroup.GET("/infos", controllers.AccountInfos())
 }
 
-func setupPropertyRoutes(e *echo.Echo) {
+func setupPropertyRoutes(e *echo.Group) {
 	propertyGroup := e.Group("/property")
 	propertyGroup.Use(jwtMiddleware)
 
@@ -82,7 +82,7 @@ func setupPropertyRoutes(e *echo.Echo) {
 	propertyGroup.GET("/:id/tenants", controllers.GetPropertyTenants())
 }
 
-func setupRoomRoutes(e *echo.Echo) {
+func setupRoomRoutes(e *echo.Group) {
 	roomGroup := e.Group("/room")
 	roomGroup.Use(jwtMiddleware)
 
@@ -107,7 +107,7 @@ func setupRoomRoutes(e *echo.Echo) {
 	roomGroup.GET("/:id/tenants", controllers.GetRoomTenants())
 }
 
-func setupTenantRoutes(e *echo.Echo) {
+func setupTenantRoutes(e *echo.Group) {
 	tenantGroup := e.Group("/tenant")
 	tenantGroup.Use(jwtMiddleware)
 
@@ -132,7 +132,7 @@ func setupTenantRoutes(e *echo.Echo) {
 	tenantGroup.GET("/:id/transactions", controllers.GetTenantTransactions())
 }
 
-func setupTransactionRoutes(e *echo.Echo) {
+func setupTransactionRoutes(e *echo.Group) {
 	transactionGroup := e.Group("/transaction")
 	transactionGroup.Use(jwtMiddleware)
 

@@ -36,7 +36,8 @@ func main() {
 
 	// creating webserver
 	e := setupWebserver()
-	setupRouter(e)
+	prefix := e.Group("api")
+	setupRouter(prefix)
 
 	// starting the server
 	s := &http2.Server{
