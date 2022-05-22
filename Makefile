@@ -7,5 +7,6 @@ build:
 
 run:
 	@echo "-- Running Gestion Locative project"
+	docker-compose -f docker/docker-compose.yml up
 
 all: build run
