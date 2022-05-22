@@ -30,6 +30,7 @@ RUN go mod verify
 
 # optimize, remove debug info and remove cross compilation
 RUN GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -ldflags="-w -s" -o /go/bin/backend
+RUN COPY $GOPATH/src/gestion-locative/backend/.env /go/bin/.env
 
 ############################
 # STEP 2 build a small image
@@ -43,6 +44,7 @@ COPY --from=builder /etc/group /etc/group
 
 # Copy our static executable.
 COPY --from=builder /go/bin/backend /backend
+COPY --from=builder /go/bin/.env /.env
 
 # Use an unprivileged user.
 USER appuser:appuser
