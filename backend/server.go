@@ -5,11 +5,13 @@ import (
 	"log"
 	"os"
 	"strconv"
+	"time"
 
 	"github.com/joho/godotenv"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 	"github.com/nightlyside/gestion-locative/database"
+	"golang.org/x/net/http2"
 )
 
 func main() {
@@ -37,7 +39,12 @@ func main() {
 	setupRouter(e)
 
 	// starting the server
-	e.Logger.Fatal(e.Start(":1234"))
+	s := &http2.Server{
+		MaxConcurrentStreams: 250,
+		MaxReadFrameSize:     1048576,
+		IdleTimeout:          10 * time.Second,
+	}
+	e.Logger.Fatal(e.StartH2CServer(":1234", s))
 }
 
 func setupWebserver() *echo.Echo {
