@@ -14,7 +14,7 @@ import (
 
 func main() {
 	// load env vars
-	godotenv.Load("../.env")
+	godotenv.Load(".env")
 
 	// connecting to db
 	port, err := strconv.Atoi(os.Getenv("DB_PORT"))

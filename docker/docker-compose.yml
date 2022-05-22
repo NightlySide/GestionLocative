@@ -1,11 +1,11 @@
-version: "3.9"
+version: "3.3"
 
 services:
     backend:
         image: gestion-locative-backend
         build:
             context: ..
-            dockerfile: backend.dockerfile
+            dockerfile: docker/backend.dockerfile
         ports:
             - "1234:1234"
 
@@ -13,6 +13,6 @@ services:
         image: gestion-locative-frontend
         build:
             context: ..
-            dockerfile: frontend.dockerfile
+            dockerfile: docker/frontend.dockerfile
         ports:
             - "80:80"
