@@ -1,34 +1,11 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Vite PWA
 
-## Getting Started
+Welcome to your new PWA, powered by [Vite](https://vitejs.dev/), [Vite Plugin PWA](https://github.com/antfu/vite-plugin-pwa), and [Workbox](https://developers.google.com/web/tools/workbox)! There are three main commands for you to run to start developing your PWA:
 
-First, run the development server:
+- `npm run dev` - Run the development server to develop your PWA
+- `npm run build` - Create a production build of your site, by default into the `dist` directory
+- `npm run serve` - Preview your production build
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## Powerful PWAs
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This starter is only the beginning. [Learn more](https://web.dev/progressive-web-apps/) about how to take this codebase and improve the install experience, create an app-like user experience, make your [offline experience even better](https://web.dev/reliable/). Then, [make it powerful](https://chromeos.dev/en/web/powerful-pwas) by adding new web APIs to supercharge your user experience. You can even [build a checklist of capabilities](https://chromeos.dev/en/web/powerful-pwas#your-pwa-checklist) you want to add, or see checklists for different kinds of apps you may want to build.
