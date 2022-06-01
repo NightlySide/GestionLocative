@@ -17,7 +17,6 @@ const RequireAuth = ({ children }: any) => {
 	useEffect(() => {
 		// if there is no time for login, return
 		if (accessToken == "" && hasTokens) return;
-		console.log(accessToken == "", hasTokens);
 
 		// else try to check the validity of the token
 		(async () => {

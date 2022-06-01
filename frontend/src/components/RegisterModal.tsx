@@ -34,7 +34,6 @@ const RegisterModal = (props: RegisterModalProps) => {
 		form.clearErrors();
 		setLoading(true);
 		const response = await registerUser(values);
-		console.log(response);
 
 		// success
 		if (response.status == 201) {
@@ -50,7 +49,6 @@ const RegisterModal = (props: RegisterModalProps) => {
 		// wrong data sent
 		else if (response.status == 400) {
 			const reason = (await response.json())["message"].toLowerCase();
-			console.log(reason);
 			if (reason.includes("user")) {
 				form.setFieldError("username", "Ce nom d'utilisateur est déjà pris.");
 			} else if (reason.includes("email")) {

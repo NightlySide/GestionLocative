@@ -22,9 +22,10 @@ const Searchbar = () => {
 					Rechercher
 				</Text>
 			</Button>
+			{/*
 			<ActionIcon radius="md" variant="default" onClick={() => toggleColorScheme()} size={36}>
 				{colorScheme === "dark" ? <Sun size={20} /> : <MoonStars size={20} />}
-			</ActionIcon>
+			</ActionIcon> */}
 		</Group>
 	);
 };

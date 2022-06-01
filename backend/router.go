@@ -34,10 +34,10 @@ func setupRouter(e *echo.Group) {
 
 func setupAuthRoutes(e *echo.Group) {
 	authGroup := e.Group("/auth")
-	authGroup.POST("/login", controllers.Login())
-	authGroup.POST("/register", controllers.Register())
-	authGroup.GET("/healthcheck", controllers.HealthCheck())
-	authGroup.GET("/refresh", controllers.RefreshToken())
+	authGroup.POST("/login", controllers.Login)
+	authGroup.POST("/register", controllers.Register)
+	authGroup.GET("/healthcheck", controllers.HealthCheck)
+	authGroup.GET("/refresh", controllers.RefreshToken)
 }
 
 func setupAdminRoutes(e *echo.Group) {
@@ -51,7 +51,7 @@ func setupAccountRoutes(e *echo.Group) {
 	accountGroup := e.Group("/account")
 	accountGroup.Use(jwtMiddleware)
 
-	accountGroup.GET("/infos", controllers.AccountInfos())
+	accountGroup.GET("/infos", controllers.AccountInfos)
 }
 
 func setupPropertyRoutes(e *echo.Group) {
@@ -59,27 +59,32 @@ func setupPropertyRoutes(e *echo.Group) {
 	propertyGroup.Use(jwtMiddleware)
 
 	// list properties
-	propertyGroup.GET("", controllers.PropertiesList())
-	propertyGroup.GET("/", controllers.PropertiesList())
+	propertyGroup.GET("", controllers.PropertiesList)
+	propertyGroup.GET("/", controllers.PropertiesList)
 
 	// create property
-	propertyGroup.POST("", controllers.CreateProperty())
-	propertyGroup.POST("/", controllers.CreateProperty())
+	propertyGroup.POST("", controllers.CreateProperty)
+	propertyGroup.POST("/", controllers.CreateProperty)
 
 	// property infos
-	propertyGroup.GET("/:id", controllers.PropertyInfos())
+	propertyGroup.GET("/:id", controllers.PropertyInfos)
 
 	// update property info
-	propertyGroup.PUT("/:id", controllers.UpdateProperty())
+	propertyGroup.PUT("/:id", controllers.UpdateProperty)
 
 	// delete property
-	propertyGroup.DELETE("/:id", controllers.DeleteProperty())
+	propertyGroup.DELETE("/:id", controllers.DeleteProperty)
 
 	// get rooms
-	propertyGroup.GET("/:id/rooms", controllers.GetPropertyRooms())
+	propertyGroup.GET("/:id/rooms", controllers.GetPropertyRooms)
 
 	// get tenants
-	propertyGroup.GET("/:id/tenants", controllers.GetPropertyTenants())
+	propertyGroup.GET("/:id/tenants", controllers.GetPropertyTenants)
+
+	// images
+	propertyGroup.POST("/:id/image", controllers.UploadImageBuilder("property"))
+	propertyGroup.GET("/:id/image", controllers.GetImagesList("property"))
+	propertyGroup.GET("/:id/image/:name", controllers.GetImageBlob("property"))
 }
 
 func setupRoomRoutes(e *echo.Group) {
@@ -87,24 +92,29 @@ func setupRoomRoutes(e *echo.Group) {
 	roomGroup.Use(jwtMiddleware)
 
 	// list tenants
-	roomGroup.GET("", controllers.RoomsList())
-	roomGroup.GET("/", controllers.RoomsList())
+	roomGroup.GET("", controllers.RoomsList)
+	roomGroup.GET("/", controllers.RoomsList)
 
 	// create tenant
-	roomGroup.POST("", controllers.CreateRoom())
-	roomGroup.POST("/", controllers.CreateRoom())
+	roomGroup.POST("", controllers.CreateRoom)
+	roomGroup.POST("/", controllers.CreateRoom)
 
 	// tenant infos
-	roomGroup.GET("/:id", controllers.RoomInfos())
+	roomGroup.GET("/:id", controllers.RoomInfos)
 
 	// update tenant info
-	roomGroup.PUT("/:id", controllers.UpdateRoom())
+	roomGroup.PUT("/:id", controllers.UpdateRoom)
 
 	// delete tenant
-	roomGroup.DELETE("/:id", controllers.DeleteRoom())
+	roomGroup.DELETE("/:id", controllers.DeleteRoom)
 
 	// get tenants
-	roomGroup.GET("/:id/tenants", controllers.GetRoomTenants())
+	roomGroup.GET("/:id/tenants", controllers.GetRoomTenants)
+
+	// images
+	roomGroup.POST("/:id/image", controllers.UploadImageBuilder("room"))
+	roomGroup.GET("/:id/image", controllers.GetImagesList("room"))
+	roomGroup.GET("/:id/image/:name", controllers.GetImageBlob("room"))
 }
 
 func setupTenantRoutes(e *echo.Group) {
@@ -112,24 +122,24 @@ func setupTenantRoutes(e *echo.Group) {
 	tenantGroup.Use(jwtMiddleware)
 
 	// list tenants
-	tenantGroup.GET("", controllers.TenantsList())
-	tenantGroup.GET("/", controllers.TenantsList())
+	tenantGroup.GET("", controllers.TenantsList)
+	tenantGroup.GET("/", controllers.TenantsList)
 
 	// create tenant
-	tenantGroup.POST("", controllers.CreateTenant())
-	tenantGroup.POST("/", controllers.CreateTenant())
+	tenantGroup.POST("", controllers.CreateTenant)
+	tenantGroup.POST("/", controllers.CreateTenant)
 
 	// tenant infos
-	tenantGroup.GET("/:id", controllers.TenantInfos())
+	tenantGroup.GET("/:id", controllers.TenantInfos)
 
 	// update tenant info
-	tenantGroup.PUT("/:id", controllers.UpdateTenant())
+	tenantGroup.PUT("/:id", controllers.UpdateTenant)
 
 	// delete tenant
-	tenantGroup.DELETE("/:id", controllers.DeleteTenant())
+	tenantGroup.DELETE("/:id", controllers.DeleteTenant)
 
 	// get transactions
-	tenantGroup.GET("/:id/transactions", controllers.GetTenantTransactions())
+	tenantGroup.GET("/:id/transactions", controllers.GetTenantTransactions)
 }
 
 func setupTransactionRoutes(e *echo.Group) {
@@ -137,19 +147,19 @@ func setupTransactionRoutes(e *echo.Group) {
 	transactionGroup.Use(jwtMiddleware)
 
 	// list tenants
-	transactionGroup.GET("", controllers.TransactionsList())
-	transactionGroup.GET("/", controllers.TransactionsList())
+	transactionGroup.GET("", controllers.TransactionsList)
+	transactionGroup.GET("/", controllers.TransactionsList)
 
 	// create tenant
-	transactionGroup.POST("", controllers.CreateTransaction())
-	transactionGroup.POST("/", controllers.CreateTransaction())
+	transactionGroup.POST("", controllers.CreateTransaction)
+	transactionGroup.POST("/", controllers.CreateTransaction)
 
 	// tenant infos
-	transactionGroup.GET("/:id", controllers.TransactionInfos())
+	transactionGroup.GET("/:id", controllers.TransactionInfos)
 
 	// update tenant info
-	transactionGroup.PUT("/:id", controllers.UpdateTransaction())
+	transactionGroup.PUT("/:id", controllers.UpdateTransaction)
 
 	// delete tenant
-	transactionGroup.DELETE("/:id", controllers.DeleteTransaction())
+	transactionGroup.DELETE("/:id", controllers.DeleteTransaction)
 }

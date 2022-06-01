@@ -1,6 +1,8 @@
 make --dry-run --always-make --keep-going --print-directory
 make: Entering directory '/home/alexandre/Documents/Repos/GestionLocative'
+echo "-- Building backend"
+docker build -f docker/backend.dockerfile . -t gestion-locative-backend
+echo "-- Building frontend"
+docker build -f docker/frontend.dockerfile . -t gestion-locative-frontend
 make: Leaving directory '/home/alexandre/Documents/Repos/GestionLocative'
  
-Makefile:2: *** missing separator.  Stop.
-

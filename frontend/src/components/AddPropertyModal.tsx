@@ -39,7 +39,6 @@ const AddPropertyModal = (props: AddPropertyModalProps) => {
 			...values
 		};
 		const response = await createProperty(accessToken, property);
-		console.log(response);
 
 		// success
 		if (response.status == 201) {

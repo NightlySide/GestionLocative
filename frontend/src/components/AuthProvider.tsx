@@ -42,7 +42,6 @@ export const useAuthContext = (shouldRefresh = true): AuthContextT => {
 			setIsRefreshing(true);
 			refreshToken().then((token) => {
 				context.setAccessToken(token);
-				console.log(token);
 				setIsRefreshing(false);
 			});
 		}

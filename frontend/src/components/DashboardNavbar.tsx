@@ -1,5 +1,5 @@
 import { Navbar } from "@mantine/core";
-import { Dashboard, Home, User } from "tabler-icons-react";
+import { Dashboard, Home, RoadSign, User } from "tabler-icons-react";
 import NavbarButton from "./NavbarButton";
 
 const DashboardNavBar = () => {
@@ -17,6 +17,12 @@ const DashboardNavBar = () => {
 					description="Liste des logements"
 					icon={<Home />}
 					linkTo="/management/property"
+				/>
+				<NavbarButton
+					label="Upload test zone"
+					description="Zone expérimentale, attention!"
+					icon={<RoadSign />}
+					linkTo="/management/upload"
 				/>
 			</Navbar.Section>
 			<Navbar.Section>

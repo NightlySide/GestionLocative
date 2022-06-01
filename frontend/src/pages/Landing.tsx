@@ -61,9 +61,9 @@ const LandingHeader = () => {
 					</Title>
 					<Group>
 						<ShowButtons />
-						<ActionIcon variant="default" onClick={() => toggleColorScheme()} size={36}>
+						{/*<ActionIcon variant="default" onClick={() => toggleColorScheme()} size={36}>
 							{colorScheme === "dark" ? <Sun size={20} /> : <MoonStars size={20} />}
-						</ActionIcon>
+					</ActionIcon> */}
 					</Group>
 				</Group>
 			</Header>

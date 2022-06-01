@@ -1,6 +1,4 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-Makefile:2: *** missing separator.  Stop.
-
 # GNU Make 4.3
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2020 Free Software Foundation, Inc.
@@ -8,7 +6,7 @@ Makefile:2: *** missing separator.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun May 22 17:43:47 2022
+# Make data base, printed on Wed Jun  1 20:55:09 2022
 
 # Variables
 
@@ -21,7 +19,7 @@ NO_AT_BRIDGE = 1
 # environment
 GTK_RC_FILES = /etc/gtk/gtkrc:/home/alexandre/.gtkrc:/home/alexandre/.config/gtkrc
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-d3e5a305-4792-40e9-83f6-b6607e473281.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-b788a96b-e203-4217-8685-0ff79395ffc8.sock
 # environment
 LC_NAME = fr_FR.UTF-8
 # environment
@@ -99,13 +97,13 @@ MAKEFILE_LIST := Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 31244
+VSCODE_PID = 107634
 # environment
 XDG_SESSION_TYPE = x11
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
-SESSION_MANAGER = local/ENS7UXN3T:@/tmp/.ICE-unix/1387,unix/ENS7UXN3T:/tmp/.ICE-unix/1387
+SESSION_MANAGER = local/ENS7UXN3T:@/tmp/.ICE-unix/1250,unix/ENS7UXN3T:/tmp/.ICE-unix/1250
 # automatic
 *F = $(notdir $*)
 # environment
@@ -115,7 +113,7 @@ DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # environment
-VSCODE_NLS_CONFIG = {"locale":"fr","availableLanguages":{"*":"fr"},"_languagePackId":"50ccac6e9bb708a41bfd03dcbba396d8.fr","_translationsConfigFile":"/home/alexandre/.config/Code/clp/50ccac6e9bb708a41bfd03dcbba396d8.fr/tcf.json","_cacheRoot":"/home/alexandre/.config/Code/clp/50ccac6e9bb708a41bfd03dcbba396d8.fr","_resolvedLanguagePackCoreLocation":"/home/alexandre/.config/Code/clp/50ccac6e9bb708a41bfd03dcbba396d8.fr/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5","_corruptedFile":"/home/alexandre/.config/Code/clp/50ccac6e9bb708a41bfd03dcbba396d8.fr/corrupted.info","_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"fr","availableLanguages":{"*":"fr"},"_languagePackId":"25fe6a3290ec415596628d4afc87a88c.fr","_translationsConfigFile":"/home/alexandre/.config/Code/clp/25fe6a3290ec415596628d4afc87a88c.fr/tcf.json","_cacheRoot":"/home/alexandre/.config/Code/clp/25fe6a3290ec415596628d4afc87a88c.fr","_resolvedLanguagePackCoreLocation":"/home/alexandre/.config/Code/clp/25fe6a3290ec415596628d4afc87a88c.fr/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5","_corruptedFile":"/home/alexandre/.config/Code/clp/25fe6a3290ec415596628d4afc87a88c.fr/corrupted.info","_languagePackSupport":true}
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # makefile
@@ -156,22 +154,23 @@ XDG_SEAT = seat0
 XDG_CURRENT_DESKTOP = KDE
 # automatic
 +F = $(notdir $+)
+ 
 # environment
 XDG_SEAT_PATH = /org/freedesktop/DisplayManager/Seat0
 # environment
 DESKTOP_SESSION = plasma
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = KDE
-# environment
+# 'override' directive
 GNUMAKEFLAGS := 
 # environment
 LOGNAME = alexandre
 # environment
 XDG_VTNR = 1
 # makefile
-.DEFAULT_GOAL := dist
+.DEFAULT_GOAL := build
 # environment
-SYSTEMD_EXEC_PID = 1210
+SYSTEMD_EXEC_PID = 1095
 # environment
 DISPLAY = :0
 # environment
@@ -231,7 +230,7 @@ KDE_FULL_SESSION = true
 # environment
 LC_IDENTIFICATION = fr_FR.UTF-8
 # variable set hash-table stats:
-# Load=109/1024=11%, Rehash=0, Collisions=5/123=4%
+# Load=109/1024=11%, Rehash=0, Collisions=5/142=4%
 
 # Pattern-specific Variable Values
 
@@ -239,9 +238,9 @@ LC_IDENTIFICATION = fr_FR.UTF-8
 
 # Directories
 
-# . (device 66311, inode 7998890): 11 files, no impossibilities.
+# . (device 66311, inode 7998890): 12 files, no impossibilities.
 
-# 11 files, no impossibilities in 1 directories.
+# 12 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -249,16 +248,12 @@ LC_IDENTIFICATION = fr_FR.UTF-8
 
 # Files
 
-dist:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
 # Not a target:
 Makefile:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-05-22 18:17:05.381311045
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
 .DEFAULT:
@@ -266,28 +261,73 @@ Makefile:
 #  Modification time never checked.
 #  File has not been updated.
 
-# Not a target:
-all:
+all: build run
 #  Command line target.
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/3=0%
+
+run:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 9):
+	@echo "-- Running Gestion Locative project"
+	docker-compose -f docker/docker-compose.yml up
+
+build:
+#  Implicit rule search has not been done.
+#  Implicit/static pattern stem: ''
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := build
+# automatic
+# * := 
+# automatic
+# < := 
+# automatic
+# + := 
+# automatic
+# % := 
+# automatic
+# ^ := 
+# automatic
+# ? := 
+# automatic
+# | := 
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=1/11=9%
+#  recipe to execute (from 'Makefile', line 2):
+	@echo "-- Building backend"
+	docker build -f docker/backend.dockerfile . -t gestion-locative-backend
+	@echo "-- Building frontend"
+	docker build -f docker/frontend.dockerfile . -t gestion-locative-frontend
+
+# Not a target:
+.SUFFIXES:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # files hash-table stats:
-# Load=5/1024=0%, Rehash=0, Collisions=0/6=0%
+# Load=6/1024=1%, Rehash=0, Collisions=0/20=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 17 / storage = 138 B / avg = 8 B
-# current buf: size = 8162 B / used = 138 B / count = 17 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 19 / storage = 154 B / avg = 8 B
+# current buf: size = 8162 B / used = 154 B / count = 19 / avg = 8 B
 
-# strcache performance: lookups = 22 / hit rate = 22%
+# strcache performance: lookups = 30 / hit rate = 36%
 # hash-table stats:
- 
-# Load=17/8192=0%, Rehash=0, Collisions=0/22=0%
-# Finished Make data base on Sun May 22 17:43:47 2022
+# Load=19/8192=0%, Rehash=0, Collisions=0/30=0%
+# Finished Make data base on Wed Jun  1 20:55:09 2022
 
  
