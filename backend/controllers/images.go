@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"archive/zip"
 	"fmt"
 	"io"
 	"io/ioutil"
@@ -130,6 +131,95 @@ func GetImageBlob(imgType string) echo.HandlerFunc {
 		}
 
 		return c.Blob(http.StatusOK, "image", data)
+	}
+}
+
+func GetImagesZip(imgType string) echo.HandlerFunc {
+	return func(c echo.Context) error {
+		claims, err := GetClaimsFromContext(c)
+		if err != nil {
+			return err
+		}
+		objectId := c.Param("id")
+
+		// create path for files
+		userDataDir, err := createUserDataFolder(claims.UserId)
+		if err != nil {
+			return nil
+		}
+
+		// creating zip archive
+		archive, err := os.Create(path.Join("/tmp", claims.UserId+"_images.zip"))
+		if err != nil {
+			return echo.NewHTTPError(http.StatusInternalServerError, fmt.Sprintf("could not create zip file: %s", err.Error()))
+		}
+		defer archive.Close()
+		zipWriter := zip.NewWriter(archive)
+
+		// adding files
+		files, err := ioutil.ReadDir(userDataDir)
+		if err != nil {
+			return echo.NewHTTPError(http.StatusInternalServerError, fmt.Sprintf("could not read user folder: %s", err.Error()))
+		}
+		for _, file := range files {
+			data := strings.Split(file.Name(), "_")
+			if data[0] == imgType && data[1] == objectId {
+				f, err := os.Open(path.Join(userDataDir, file.Name()))
+				if err != nil {
+					return echo.NewHTTPError(http.StatusInternalServerError, fmt.Sprintf("could not read file: %s", err.Error()))
+				}
+				defer f.Close()
+
+				w, err := zipWriter.Create(strings.Join(data[2:], "_"))
+				if err != nil {
+					return echo.NewHTTPError(http.StatusInternalServerError, fmt.Sprintf("could not create file in archive: %s", err.Error()))
+				}
+
+				if _, err := io.Copy(w, f); err != nil {
+					return echo.NewHTTPError(http.StatusInternalServerError, fmt.Sprintf("could write to file in zip: %s", err.Error()))
+				}
+			}
+		}
+		zipWriter.Close()
+
+		data, err := ioutil.ReadFile(path.Join("/tmp", claims.UserId+"_images.zip"))
+		if err != nil {
+			return echo.NewHTTPError(http.StatusInternalServerError, fmt.Sprintf("cannot read final archive: %s", err.Error()))
+		}
+
+		return c.Blob(http.StatusOK, "application/zip", data)
+	}
+}
+
+func DeleteImages(imgType string) echo.HandlerFunc {
+	return func(c echo.Context) error {
+		objectId := c.Param("id")
+		claims, err := GetClaimsFromContext(c)
+		if err != nil {
+			return err
+		}
+		var fileNames []string
+		err = c.Bind(&fileNames)
+		if err != nil {
+			return echo.NewHTTPError(http.StatusBadRequest, fmt.Sprintf("cannot read ids from request: %s", err.Error()))
+		}
+
+		// create path for files
+		userDataDir, err := createUserDataFolder(claims.UserId)
+		if err != nil {
+			return nil
+		}
+
+		for _, fileName := range fileNames {
+			pathName := strings.Join([]string{imgType, objectId, fileName}, "_")
+			fullPath := path.Join(userDataDir, pathName)
+			err := os.Remove(fullPath)
+			if err != nil {
+				return echo.NewHTTPError(http.StatusInternalServerError, fmt.Sprintf("cannot delete file: %s", err.Error()))
+			}
+		}
+
+		return c.String(http.StatusOK, "success")
 	}
 }
 

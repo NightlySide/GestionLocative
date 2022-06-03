@@ -83,7 +83,9 @@ func setupPropertyRoutes(e *echo.Group) {
 
 	// images
 	propertyGroup.POST("/:id/image", controllers.UploadImageBuilder("property"))
+	propertyGroup.DELETE("/:id/image", controllers.DeleteImages("property"))
 	propertyGroup.GET("/:id/image", controllers.GetImagesList("property"))
+	propertyGroup.GET("/:id/image_archive", controllers.GetImagesZip("property"))
 	propertyGroup.GET("/:id/image/:name", controllers.GetImageBlob("property"))
 }
 

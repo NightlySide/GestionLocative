@@ -1,6 +1,6 @@
 import { Group, Text, useMantineTheme, MantineTheme, Image } from "@mantine/core";
 import { Upload, Photo, X, Icon as TablerIcon } from "tabler-icons-react";
-import { Dropzone, DropzoneStatus, IMAGE_MIME_TYPE } from "@mantine/dropzone";
+import { Dropzone, DropzoneProps, DropzoneStatus, IMAGE_MIME_TYPE } from "@mantine/dropzone";
 import { useEffect, useState } from "react";
 import { showNotification } from "@mantine/notifications";
 import { humanFileSize } from "../utils";
@@ -103,7 +103,15 @@ export const dropzoneChildren = (status: DropzoneStatus, acceptedFiles: File[], 
 	</Group>
 );
 
-const FileDropper = ({ files, setFiles }: { files: File[]; setFiles: (files: File[]) => void }) => {
+const FileDropper = ({
+	files,
+	setFiles,
+	loading
+}: {
+	files: File[];
+	setFiles: (files: File[]) => void;
+	loading: boolean;
+}) => {
 	const theme = useMantineTheme();
 
 	const rejectNotification = (files: FileRejection[]) => {
@@ -127,7 +135,8 @@ const FileDropper = ({ files, setFiles }: { files: File[]; setFiles: (files: Fil
 			onReject={(files) => rejectNotification(files)}
 			maxSize={2 * 1024 ** 2}
 			multiple
-			accept={IMAGE_MIME_TYPE}>
+			accept={IMAGE_MIME_TYPE}
+			loading={loading}>
 			{(status) => dropzoneChildren(status, files, theme)}
 		</Dropzone>
 	);

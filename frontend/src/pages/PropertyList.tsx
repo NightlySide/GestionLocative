@@ -92,16 +92,7 @@ const PropertyList = () => {
 
 	const updateProperties = async () => {
 		setLoading(true);
-
-		const fetched_p = await getProperties(accessToken);
-		// sort by surface
-		fetched_p.sort((a, b) => {
-			if (a.surface < b.surface) return 1;
-			if (a.surface > b.surface) return -1;
-			return 0;
-		});
-
-		setProperties(fetched_p);
+		setProperties(await getProperties(accessToken));
 		setLoading(false);
 	};
 

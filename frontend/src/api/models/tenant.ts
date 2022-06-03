@@ -9,4 +9,5 @@ export interface Tenant {
 	leave_date: Date;
 	email: string;
 	tel: string;
+	image: string;
 }

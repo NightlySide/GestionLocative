@@ -18,6 +18,12 @@ export const getProperties = async (token: string): Promise<Property[]> => {
 		})
 	);
 
+	properties.sort((a, b) => {
+		if (a.surface < b.surface) return 1;
+		if (a.surface > b.surface) return -1;
+		return 0;
+	});
+
 	return properties;
 };
 

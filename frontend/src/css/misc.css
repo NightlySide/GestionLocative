@@ -1,0 +1,17 @@
+.hoverable:hover {
+	cursor: pointer;
+	filter: saturate(100%) brightness(70%);
+	transition: 0.15s;
+}
+
+.img-cover figure,
+.img-cover img,
+.img-cover div {
+	object-fit: cover;
+}
+
+.img-cover img {
+	min-width: 100%;
+	width: 200px !important;
+	height: 200px !important;
+}

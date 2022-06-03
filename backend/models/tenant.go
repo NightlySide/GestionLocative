@@ -14,4 +14,5 @@ type Tenant struct {
 	Guarantor     string    `json:"guarantor"`
 	Email         string    `json:"email"`
 	Tel           string    `json:"tel"`
+	Image         string    `json:"image"`
 }

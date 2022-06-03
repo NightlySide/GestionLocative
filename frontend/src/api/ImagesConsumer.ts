@@ -40,3 +40,27 @@ export const getObjectImage = async (
 
 	return await response.blob();
 };
+
+export const getImagesArchive = async (token: string, objectType: string, objectId: string): Promise<Blob> => {
+	const response = await fetch(API_URL + "/" + objectType + "/" + objectId + "/image_archive", {
+		method: "get",
+		headers: { "Content-Type": "application/zip", AccessToken: token }
+	});
+
+	return await response.blob();
+};
+
+export const deleteImages = async (
+	token: string,
+	objectType: string,
+	objectId: string,
+	imageNames: string[]
+): Promise<Response> => {
+	const response = await fetch(API_URL + "/" + objectType + "/" + objectId + "/image", {
+		method: "delete",
+		headers: { "Content-Type": "application/json", AccessToken: token },
+		body: JSON.stringify(imageNames)
+	});
+
+	return response;
+};

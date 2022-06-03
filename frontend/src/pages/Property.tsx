@@ -7,9 +7,12 @@ import { Property } from "../api/models/property";
 import { Room } from "../api/models/room";
 import { Tenant } from "../api/models/tenant";
 import { getPropertyInfos } from "../api/PropertyConsumer";
-import { getRoomInfos } from "../api/RoomConsumer";
+import { getRooms } from "../api/RoomConsumer";
 import { getTenantInfos } from "../api/TenantConsumer";
 import { useAuthContext } from "../components/AuthProvider";
+import PropertyInfos from "./property/PropertyInfos";
+import RoomList from "./property/RoomList";
+import TenantList from "./property/TenantList";
 
 const PropertyPage = () => {
 	let { id } = useParams();
@@ -33,11 +36,7 @@ const PropertyPage = () => {
 		if (!property) return;
 
 		(async () => {
-			const rooms = (
-				await Promise.all(property.rooms.map((room_id) => getRoomInfos(accessToken, room_id)))
-			).filter((room) => room != undefined) as Room[];
-
-			setRooms(rooms);
+			setRooms(await getRooms(accessToken, property.rooms));
 		})();
 	}, [id, property]);
 
@@ -87,9 +86,15 @@ const PropertyPage = () => {
 			</Group>
 
 			<Tabs variant="outline" mt="lg" grow>
-				<Tabs.Tab label="Informations">Info tab</Tabs.Tab>
-				<Tabs.Tab label="Chambres">Chambre</Tabs.Tab>
-				<Tabs.Tab label="Locataires">Locataires</Tabs.Tab>
+				<Tabs.Tab label="Informations">
+					<PropertyInfos property={property} />
+				</Tabs.Tab>
+				<Tabs.Tab label="Chambres">
+					<RoomList rooms={rooms} />
+				</Tabs.Tab>
+				<Tabs.Tab label="Locataires">
+					<TenantList tenants={tenants} />
+				</Tabs.Tab>
 			</Tabs>
 		</>
 	);

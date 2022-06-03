@@ -49,7 +49,7 @@ const UploadTest = () => {
 
 	return (
 		<>
-			<FileDropper files={files} setFiles={setFiles} />
+			<FileDropper files={files} setFiles={setFiles} loading={false} />
 			<Button fullWidth mt="lg" onClick={sendFiles} disabled={files.length == 0}>
 				Envoyer
 			</Button>
