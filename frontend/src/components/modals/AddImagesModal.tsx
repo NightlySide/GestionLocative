@@ -1,8 +1,8 @@
 import { Button, Modal } from "@mantine/core";
 import { useState } from "react";
-import { uploadImages } from "../api/ImagesConsumer";
-import { useAuthContext } from "./AuthProvider";
-import FileDropper from "./FileDropper";
+import { uploadImages } from "../../api/ImagesConsumer";
+import { useAuthContext } from "../AuthProvider";
+import FileDropper from "../FileDropper";
 
 interface AddImagesModalProps {
 	opened: boolean;

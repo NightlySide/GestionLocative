@@ -5,8 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { SquarePlus, Eye, Pencil } from "tabler-icons-react";
 import { Room } from "../../api/models/room";
 import { Tenant } from "../../api/models/tenant";
-import AddPropertyModal from "../../components/AddPropertyModal";
-import AddRoomModal from "../../components/AddRoomModal";
+import AddPropertyModal from "../../components/modals/AddPropertyModal";
+import AddRoomModal from "../../components/modals/AddRoomModal";
 
 interface TenantListProps {
 	tenants: Tenant[];

@@ -8,7 +8,7 @@ import "../../css/misc.css";
 
 import { Download, Pencil, SquarePlus, Trash, X } from "tabler-icons-react";
 import { useColorScheme } from "@mantine/hooks";
-import AddImagesModal from "../../components/AddImagesModal";
+import AddImagesModal from "../../components/modals/AddImagesModal";
 
 interface PropertyInfosProps {
 	property: Property;
@@ -36,7 +36,15 @@ const ImageThumbnail = ({ url, shouldDelete, ...props }: { url: string; shouldDe
 	);
 };
 
-const AddImageCard = ({ objectId, refreshImages }: { objectId: string; refreshImages: () => void }) => {
+const AddImageCard = ({
+	objectId,
+	refreshImages,
+	onClose
+}: {
+	objectId: string;
+	refreshImages: () => void;
+	onClose: () => void;
+}) => {
 	const colorScheme = useColorScheme();
 	const theme = useMantineTheme();
 	const [opened, setOpened] = useState(false);
@@ -45,7 +53,10 @@ const AddImageCard = ({ objectId, refreshImages }: { objectId: string; refreshIm
 		<>
 			<AddImagesModal
 				opened={opened}
-				onClose={() => setOpened(false)}
+				onClose={() => {
+					setOpened(false);
+					onClose();
+				}}
 				objectType="property"
 				objectId={objectId}
 				onUpload={refreshImages}
@@ -170,7 +181,13 @@ const PropertyInfos = ({ property }: PropertyInfosProps) => {
 						);
 					})}
 
-				{imageEditMode == "idle" && <AddImageCard objectId={property.id} refreshImages={fetchImages} />}
+				{imageEditMode != "idle" && (
+					<AddImageCard
+						objectId={property.id}
+						refreshImages={fetchImages}
+						onClose={() => setImageEditMode("idle")}
+					/>
+				)}
 			</Group>
 
 			{isViewerOpen && (

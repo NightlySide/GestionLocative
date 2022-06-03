@@ -56,3 +56,13 @@ export const createProperty = async (token: string, property: PropertyCreationVa
 
 	return response;
 };
+
+export const updateProperty = async (token: string, property: Property): Promise<Response> => {
+	const response = await fetch(API_URL + "/property/" + property.id, {
+		method: "put",
+		headers: { "Content-Type": "application/json", AccessToken: token },
+		body: JSON.stringify(property)
+	});
+
+	return response;
+};

@@ -1,7 +1,7 @@
 import { Box, Button, Center, Group, Loader, Tabs, Text, Title, useMantineTheme } from "@mantine/core";
 import { useColorScheme } from "@mantine/hooks";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Pencil } from "tabler-icons-react";
 import { Property } from "../api/models/property";
 import { Room } from "../api/models/room";
@@ -10,6 +10,7 @@ import { getPropertyInfos } from "../api/PropertyConsumer";
 import { getRooms } from "../api/RoomConsumer";
 import { getTenantInfos } from "../api/TenantConsumer";
 import { useAuthContext } from "../components/AuthProvider";
+import useProperty from "../hooks/useProperty";
 import PropertyInfos from "./property/PropertyInfos";
 import RoomList from "./property/RoomList";
 import TenantList from "./property/TenantList";
@@ -18,17 +19,12 @@ const PropertyPage = () => {
 	let { id } = useParams();
 
 	const { accessToken } = useAuthContext();
-	const [property, setProperty] = useState<Property>();
+	const [property] = useProperty(id);
 	const [rooms, setRooms] = useState<Room[]>();
 	const [tenants, setTenants] = useState<Tenant[]>();
 	const colorScheme = useColorScheme();
 	const theme = useMantineTheme();
-
-	// fetch the property infos
-	useEffect(() => {
-		if (!id) return;
-		(async () => setProperty(await getPropertyInfos(accessToken, id)))();
-	}, [id]);
+	const navigate = useNavigate();
 
 	// fetch rooms infos
 	useEffect(() => {
@@ -79,7 +75,10 @@ const PropertyPage = () => {
 					</Text>
 				</div>
 				<Box>
-					<Button fullWidth leftIcon={<Pencil />}>
+					<Button
+						fullWidth
+						leftIcon={<Pencil />}
+						onClick={() => navigate("/management/property/" + property.id + "/edit")}>
 						Editer
 					</Button>
 				</Box>

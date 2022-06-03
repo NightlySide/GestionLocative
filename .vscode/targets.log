@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri Jun  3 09:31:02 2022
+# Make data base, printed on Fri Jun  3 22:02:01 2022
 
 # Variables
 
@@ -19,7 +19,7 @@ NO_AT_BRIDGE = 1
 # environment
 GTK_RC_FILES = /etc/gtk/gtkrc:/home/alexandre/.gtkrc:/home/alexandre/.config/gtkrc
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-ed4b0538-868b-4924-b432-86b5d05eb581.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-b2b80df0-ebe1-41aa-b9b4-23747a11fd4f.sock
 # environment
 LC_NAME = fr_FR.UTF-8
 # environment
@@ -44,7 +44,6 @@ VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 PWD = /home/alexandre/Documents/Repos/GestionLocative
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
- 
 # environment
 MAIL = /var/spool/mail/alexandre
 # environment
@@ -283,7 +282,6 @@ build:
 #  Implicit/static pattern stem: ''
 #  File does not exist.
 #  File has been updated.
- 
 #  Needs to be updated (-q is set).
 # automatic
 # @ := build
@@ -298,6 +296,7 @@ build:
 # automatic
 # ^ := 
 # automatic
+ 
 # ? := 
 # automatic
 # | := 
@@ -329,6 +328,6 @@ build:
 # strcache performance: lookups = 30 / hit rate = 36%
 # hash-table stats:
 # Load=19/8192=0%, Rehash=0, Collisions=0/30=0%
-# Finished Make data base on Fri Jun  3 09:31:02 2022
+# Finished Make data base on Fri Jun  3 22:02:01 2022
 
  

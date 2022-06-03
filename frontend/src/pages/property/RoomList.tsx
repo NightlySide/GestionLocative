@@ -4,8 +4,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { SquarePlus, Eye, Pencil } from "tabler-icons-react";
 import { Room } from "../../api/models/room";
-import AddPropertyModal from "../../components/AddPropertyModal";
-import AddRoomModal from "../../components/AddRoomModal";
+import AddPropertyModal from "../../components/modals/AddPropertyModal";
+import AddRoomModal from "../../components/modals/AddRoomModal";
 
 interface RoomListProps {
 	rooms: Room[];

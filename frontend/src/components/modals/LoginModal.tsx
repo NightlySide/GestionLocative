@@ -3,8 +3,8 @@ import { useForm } from "@mantine/form";
 import { cleanNotifications, showNotification } from "@mantine/notifications";
 import { useState } from "react";
 import { User, Lock } from "tabler-icons-react";
-import { getUserInfos, loginUser } from "../api/AuthConsumer";
-import { useAuthContext } from "./AuthProvider";
+import { getUserInfos, loginUser } from "../../api/AuthConsumer";
+import { useAuthContext } from "../AuthProvider";
 
 interface LoginModalProps {
 	onClose: () => void;

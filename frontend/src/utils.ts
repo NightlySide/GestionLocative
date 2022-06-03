@@ -1,4 +1,4 @@
-export const humanFileSize = (bytes, si = false, dp = 1) => {
+export const humanFileSize = (bytes: number, si = false, dp = 1) => {
 	const thresh = si ? 1000 : 1024;
 
 	if (Math.abs(bytes) < thresh) {
@@ -17,4 +17,11 @@ export const humanFileSize = (bytes, si = false, dp = 1) => {
 	} while (Math.round(Math.abs(bytes) * r) / r >= thresh && u < units.length - 1);
 
 	return bytes.toFixed(dp) + " " + units[u];
+};
+
+export const addressToStreetCodeCity = (address: string) => {
+	const codeReg = /([0-9]{5})/g;
+	const [street, code, city] = address.split(codeReg);
+
+	return [street.trim(), code.trim(), city.trim()];
 };

@@ -3,8 +3,8 @@ import { useForm } from "@mantine/form";
 import { showNotification } from "@mantine/notifications";
 import { useState } from "react";
 import { Numbers, Stairs, Building } from "tabler-icons-react";
-import { useAuthContext } from "./AuthProvider";
-import { createProperty, PropertyCreationValues } from "../api/PropertyConsumer";
+import { useAuthContext } from "../AuthProvider";
+import { createProperty, PropertyCreationValues } from "../../api/PropertyConsumer";
 
 interface AddPropertyModalProps {
 	onCreate: () => void;

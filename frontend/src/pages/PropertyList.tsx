@@ -5,12 +5,14 @@ import { useAuthContext } from "../components/AuthProvider";
 import { Property } from "../api/models/property";
 import { Card, Center, Loader, Image, Text, Group, Button, SimpleGrid, useMantineTheme } from "@mantine/core";
 import { Eye, Pencil, SquarePlus } from "tabler-icons-react";
-import AddPropertyModal from "../components/AddPropertyModal";
+import AddPropertyModal from "../components/modals/AddPropertyModal";
 import { useColorScheme } from "@mantine/hooks";
 import "../css/propertylist.css";
+import { getObjectImage } from "../api/ImagesConsumer";
 
 interface PropertyCardProps {
 	property: Property;
+	token: string;
 }
 
 const AddPropertyCard = (props: any) => {
@@ -47,16 +49,25 @@ const AddPropertyCard = (props: any) => {
 	);
 };
 
-const PropertyCard = ({ property }: PropertyCardProps) => {
+const PropertyCard = ({ property, token }: PropertyCardProps) => {
 	const navigate = useNavigate();
 	const nbRooms = property.rooms.length;
 	const nbTenants = property.tenants.length;
+
+	const [imageUrl, setImageUrl] = useState("");
+
+	useEffect(() => {
+		(async () => {
+			const blob = await getObjectImage(token, "property", property.id, property.image);
+			setImageUrl(URL.createObjectURL(blob));
+		})();
+	}, [property]);
 
 	return (
 		<Card shadow="sm" p="lg">
 			<Card.Section>
 				<div style={{ border: "1px solid #373a40", borderBottom: "" }}>
-					<Image alt="Flat image" src={property.image} height={200} withPlaceholder />
+					<Image alt="Flat image" src={imageUrl} height={200} withPlaceholder />
 				</div>
 			</Card.Section>
 
@@ -77,8 +88,14 @@ const PropertyCard = ({ property }: PropertyCardProps) => {
 					onClick={() => navigate("/management/property/" + property.id)}>
 					Voir
 				</Button>
-				<Button leftIcon={<Pencil />} variant="light" color="teal" fullWidth mt="md">
-					Editer
+				<Button
+					leftIcon={<Pencil />}
+					variant="light"
+					color="teal"
+					fullWidth
+					mt="md"
+					onClick={() => navigate("/management/property/" + property.id + "/edit")}>
+					Éditer
 				</Button>
 			</SimpleGrid>
 		</Card>
@@ -109,8 +126,8 @@ const PropertyList = () => {
 
 	return (
 		<SimpleGrid cols={2} spacing="sm">
-			{properties?.map((property: Property) => {
-				return <PropertyCard property={property} />;
+			{properties?.map((property: Property, idx: number) => {
+				return <PropertyCard key={idx} token={accessToken} property={property} />;
 			})}
 			<AddPropertyCard />
 		</SimpleGrid>

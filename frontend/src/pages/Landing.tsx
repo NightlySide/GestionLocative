@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { MoonStars, Sun } from "tabler-icons-react";
 import { useAuthContext } from "../components/AuthProvider";
-import LoginModal from "../components/LoginModal";
+import LoginModal from "../components/modals/LoginModal";
 import RegisterModal from "../components/RegisterModal";
 import useLogout from "../hooks/useLogout";
 
