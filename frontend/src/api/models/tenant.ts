@@ -5,8 +5,8 @@ export interface Tenant {
 	former_address: string;
 	next_address: string;
 	comments: string;
-	entry_date: Date;
-	leave_date: Date;
+	entry_date: string;
+	leave_date: string;
 	email: string;
 	tel: string;
 	image: string;

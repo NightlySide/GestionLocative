@@ -30,12 +30,6 @@ const DashboardNavBar = () => {
 					icon={<FileEuro />}
 					linkTo="/management/transactions"
 				/>
-				<NavbarButton
-					label="Upload test zone"
-					description="Zone expérimentale, attention!"
-					icon={<RoadSign />}
-					linkTo="/management/upload"
-				/>
 			</Navbar.Section>
 			<Navbar.Section>
 				<NavbarButton label="Mon compte" icon={<User />} barOnTop />

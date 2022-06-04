@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri Jun  3 22:02:01 2022
+# Make data base, printed on Sat Jun  4 20:56:33 2022
 
 # Variables
 
@@ -19,7 +19,7 @@ NO_AT_BRIDGE = 1
 # environment
 GTK_RC_FILES = /etc/gtk/gtkrc:/home/alexandre/.gtkrc:/home/alexandre/.config/gtkrc
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-b2b80df0-ebe1-41aa-b9b4-23747a11fd4f.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-604a1e25-c765-434d-917d-aef2751bb795.sock
 # environment
 LC_NAME = fr_FR.UTF-8
 # environment
@@ -57,7 +57,7 @@ VSCODE_LOG_STACK = false
 # environment
 VSCODE_CODE_CACHE_PATH = /home/alexandre/.config/Code/CachedData/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5
 # environment
-XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session1
+XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session2
 # environment
 LANG = C
 # environment
@@ -97,13 +97,13 @@ MAKEFILE_LIST := Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 2962
+VSCODE_PID = 16758
 # environment
 XDG_SESSION_TYPE = x11
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
-SESSION_MANAGER = local/ENS7UXN3T:@/tmp/.ICE-unix/1256,unix/ENS7UXN3T:/tmp/.ICE-unix/1256
+SESSION_MANAGER = local/ENS7UXN3T:@/tmp/.ICE-unix/1281,unix/ENS7UXN3T:/tmp/.ICE-unix/1281
 # automatic
 *F = $(notdir $*)
 # environment
@@ -169,7 +169,7 @@ XDG_VTNR = 1
 # makefile
 .DEFAULT_GOAL := build
 # environment
-SYSTEMD_EXEC_PID = 1107
+SYSTEMD_EXEC_PID = 1109
 # environment
 DISPLAY = :0
 # environment
@@ -290,13 +290,13 @@ build:
 # automatic
 # < := 
 # automatic
+ 
 # + := 
 # automatic
 # % := 
 # automatic
 # ^ := 
 # automatic
- 
 # ? := 
 # automatic
 # | := 
@@ -328,6 +328,6 @@ build:
 # strcache performance: lookups = 30 / hit rate = 36%
 # hash-table stats:
 # Load=19/8192=0%, Rehash=0, Collisions=0/30=0%
-# Finished Make data base on Fri Jun  3 22:02:01 2022
+# Finished Make data base on Sat Jun  4 20:56:33 2022
 
  

@@ -117,6 +117,8 @@ func setupRoomRoutes(e *echo.Group) {
 	roomGroup.POST("/:id/image", controllers.UploadImageBuilder("room"))
 	roomGroup.GET("/:id/image", controllers.GetImagesList("room"))
 	roomGroup.GET("/:id/image/:name", controllers.GetImageBlob("room"))
+	roomGroup.DELETE("/:id/image", controllers.DeleteImages("room"))
+	roomGroup.GET("/:id/image_archive", controllers.GetImagesZip("room"))
 }
 
 func setupTenantRoutes(e *echo.Group) {
@@ -142,6 +144,13 @@ func setupTenantRoutes(e *echo.Group) {
 
 	// get transactions
 	tenantGroup.GET("/:id/transactions", controllers.GetTenantTransactions)
+
+	// images
+	tenantGroup.POST("/:id/image", controllers.UploadImageBuilder("tenant"))
+	tenantGroup.GET("/:id/image", controllers.GetImagesList("tenant"))
+	tenantGroup.GET("/:id/image/:name", controllers.GetImageBlob("tenant"))
+	tenantGroup.DELETE("/:id/image", controllers.DeleteImages("tenant"))
+	tenantGroup.GET("/:id/image_archive", controllers.GetImagesZip("tenant"))
 }
 
 func setupTransactionRoutes(e *echo.Group) {

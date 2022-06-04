@@ -30,3 +30,13 @@ export const getRoomInfos = async (token: string, id: string): Promise<Room | un
 
 	return await response.json();
 };
+
+export const updateRoom = async (token: string, room: Room): Promise<Response> => {
+	const response = await fetch(API_URL + "/room/" + room.id, {
+		method: "put",
+		headers: { "Content-Type": "application/json", AccessToken: token },
+		body: JSON.stringify(room)
+	});
+
+	return response;
+};

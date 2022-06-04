@@ -15,7 +15,7 @@ interface PropertyCardProps {
 	token: string;
 }
 
-const AddPropertyCard = (props: any) => {
+const AddPropertyCard = () => {
 	const colorScheme = useColorScheme();
 	const theme = useMantineTheme();
 	const [opened, setOpened] = useState(false);

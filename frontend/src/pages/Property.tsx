@@ -3,13 +3,12 @@ import { useColorScheme } from "@mantine/hooks";
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Pencil } from "tabler-icons-react";
-import { Property } from "../api/models/property";
 import { Room } from "../api/models/room";
 import { Tenant } from "../api/models/tenant";
-import { getPropertyInfos } from "../api/PropertyConsumer";
 import { getRooms } from "../api/RoomConsumer";
 import { getTenantInfos } from "../api/TenantConsumer";
 import { useAuthContext } from "../components/AuthProvider";
+import PhotoGallery from "../components/PhotoGallery";
 import useProperty from "../hooks/useProperty";
 import PropertyInfos from "./property/PropertyInfos";
 import RoomList from "./property/RoomList";
@@ -26,7 +25,7 @@ const PropertyPage = () => {
 	const theme = useMantineTheme();
 	const navigate = useNavigate();
 
-	// fetch rooms infos
+	// fetch rooms and tenants infos
 	useEffect(() => {
 		if (!id) return;
 		if (!property) return;
@@ -34,12 +33,6 @@ const PropertyPage = () => {
 		(async () => {
 			setRooms(await getRooms(accessToken, property.rooms));
 		})();
-	}, [id, property]);
-
-	// fetch tenants infos
-	useEffect(() => {
-		if (!id) return;
-		if (!property) return;
 
 		(async () => {
 			const tenants = (
@@ -87,6 +80,9 @@ const PropertyPage = () => {
 			<Tabs variant="outline" mt="lg" grow>
 				<Tabs.Tab label="Informations">
 					<PropertyInfos property={property} />
+				</Tabs.Tab>
+				<Tabs.Tab label="Photos">
+					<PhotoGallery objectType="property" objectId={property.id} archiveName={property.address} />
 				</Tabs.Tab>
 				<Tabs.Tab label="Chambres">
 					<RoomList rooms={rooms} />
